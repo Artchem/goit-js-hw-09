@@ -11,8 +11,10 @@ const refs = {
 };
 
 let isTimerStop = false;
+const btnStart = refs.btnStart;
 
-refs.btnStart.disabled = true;
+btnStart.disabled = true;
+// console.log(isBtnStartDisable);
 refs.btnStart.addEventListener('click', startTimer);
 
 const options = {
@@ -27,7 +29,7 @@ const options = {
     const currentData = Date.now();
 
     if (currentData < selectedDate) {
-      refs.btnStart.disabled = false;
+      btnStart.disabled = false;
     } else {
       Notify.failure('Please choose a date in the future', {
         position: 'center-top',
@@ -41,6 +43,8 @@ const options = {
 const data = flatpickr('#datetime-picker', options);
 
 function startTimer() {
+  btnStart.disabled = true;
+
   const intervalId = setInterval(() => {
     const userSelectedDate = data.selectedDates[0];
     const currentDate = new Date();
@@ -63,8 +67,8 @@ function startTimer() {
   }, 1000);
 }
 
-function stopInterval(isValueTimer, valueIntervalId) {
-  if (isValueTimer) {
+function stopInterval(isFinishTimer, valueIntervalId) {
+  if (isFinishTimer) {
     clearInterval(valueIntervalId);
   }
 }
