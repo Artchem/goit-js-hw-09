@@ -59,10 +59,14 @@ function startTimer() {
     isTimerStop =
       days === '00' && hours === '00' && minutes === '00' && seconds === '00';
 
-    if (isTimerStop) {
-      clearInterval(intervalId);
-    }
+    stopInterval(isTimerStop, intervalId);
   }, 1000);
+}
+
+function stopInterval(isValueTimer, valueIntervalId) {
+  if (isValueTimer) {
+    clearInterval(valueIntervalId);
+  }
 }
 
 function addLeadingZero(value) {
