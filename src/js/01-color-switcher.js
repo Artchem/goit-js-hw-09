@@ -9,10 +9,10 @@ refs.btnStart.addEventListener('click', onBtnStartClick);
 refs.btnStop.addEventListener('click', onBtnStopClick);
 
 function onBtnStartClick(evt) {
-  intervalId = setInterval(() => {
-    evt.target.disabled = true;
-    refs.btnStop.disabled = false;
+  evt.target.disabled = true;
+  refs.btnStop.disabled = false;
 
+  intervalId = setInterval(() => {
     document.body.style.background = getRandomHexColor();
   }, 1000);
 }
