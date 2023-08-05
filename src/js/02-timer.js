@@ -8,6 +8,7 @@ const refs = {
   hoursValue: document.querySelector('[data-hours]'),
   minutesValue: document.querySelector('[data-minutes]'),
   secondsValue: document.querySelector('[data-seconds]'),
+  dateTimeInput: document.querySelector('#datetime-picker'),
 };
 
 let isTimerStop = false;
@@ -44,6 +45,7 @@ const data = flatpickr('#datetime-picker', options);
 
 function startTimer() {
   btnStart.disabled = true;
+  refs.dateTimeInput.disabled = true;
 
   const intervalId = setInterval(() => {
     const userSelectedDate = data.selectedDates[0];
@@ -70,6 +72,7 @@ function startTimer() {
 function stopInterval(isFinishTimer, valueIntervalId) {
   if (isFinishTimer) {
     clearInterval(valueIntervalId);
+    refs.dateTimeInput.disabled = false;
   }
 }
 
